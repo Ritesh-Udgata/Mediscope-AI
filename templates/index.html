@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Symptom Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h2,
+        h3 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        .symptom-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .symptom-selector {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .prediction-item {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+        }
+
+        .probability-bar {
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+
+        .probability-fill {
+            height: 100%;
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        .extra-prediction {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .instructions {
+            margin: 10px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .medicines-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .medicine-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .medicine-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .side-effects {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .interactions {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .interaction-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .risk-high {
+            color: #dc3545;
+        }
+
+        .risk-moderate {
+            color: #ffc107;
+        }
+
+        .risk-low {
+            color: #28a745;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Doctor Symptom Checker</h2>
+    <a href="http://localhost:3000">
+        <button>Go to Chat</button>
+    </a>
+    <a href="http://localhost:4000/database-overhaul">
+        <button>Database Overhaul</button>
+    </a>
+
+    <div class="container">
+        
+        <div class="symptom-container">
+            <label for="symptoms"><strong>Select Symptoms:</strong></label>
+            <p class="instructions">Hold Ctrl (Windows) or Command (Mac) to select multiple symptoms</p>
+            <select id="symptoms" class="symptom-selector" multiple>
+                {% for symptom in symptoms_list %}
+                <option value="{{ loop.index0 }}">{{ symptom }}</option>
+                {% endfor %}
+            </select>
+            <button class="button" onclick="getPrediction()">Predict Disease</button>
+            <div id="loading">Processing...</div>
+        </div>
+
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        function getPrediction() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').innerHTML = '';
+
+            const symptomOptions = document.getElementById('symptoms').options;
+            let symptomsArray = Array.from(symptomOptions).map(option => option.selected ? 1 : 0);
+
+            let selectedSymptoms = Array.from(symptomOptions)
+                .filter(option => option.selected)
+                .map(option => option.text);
+
+            console.log('Sending symptoms array:', symptomsArray);
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ symptoms: symptomsArray })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response received:', data); // Debug log
+                    document.getElementById('loading').style.display = 'none';
+
+                    if (!data || !data.predictions) {
+                        throw new Error('Invalid response format: missing predictions');
+                    }
+
+                    const resultsDiv = document.getElementById('results');
+                    if (data.error) {
+                        resultsDiv.innerHTML = `<h3>Error:</h3><p>${data.error}</p>`;
+                        return;
+                    }
+
+                    let resultHTML = `
+                    <h3>Diagnosis Results</h3>
+                    <div class="selected-symptoms">
+                        <h4>Selected Symptoms:</h4>
+                        <ul>${selectedSymptoms.map(s => `<li>${s}</li>`).join('')}</ul>
+                    </div>
+                    <h4>Top Predictions:</h4>
+                `;
+
+                    // Add main predictions
+                    data.predictions.forEach((pred, index) => {
+                        resultHTML += `
+                        <div class="prediction-item">
+                            <strong>Prediction ${index + 1}:</strong> ${pred.disease}
+                            <div class="probability-bar">
+                                <div class="probability-fill" style="width: ${pred.probability * 100}%"></div>
+                            </div>
+                            <small>Probability: ${(pred.probability * 100).toFixed(2)}%</small>
+                        </div>
+                    `;
+                    });
+
+                    // Add extra prediction if available
+                    if (data.extra_prediction) {
+                        resultHTML += `
+                        <div class="extra-prediction">
+                            <h4>Additional Possibility:</h4>
+                            <div class="prediction-item">
+                                <strong>${data.extra_prediction.disease}</strong>
+                                <div class="probability-bar">
+                                    <div class="probability-fill" style="width: ${data.extra_prediction.probability * 100}%"></div>
+                                </div>
+                                <small>Probability: ${(data.extra_prediction.probability * 100).toFixed(2)}%</small>
+                            </div>
+                        </div>
+                    `;
+                    }
+
+                    // Add medicines section - FIXED
+                    resultHTML += `<div class="medicines-section">
+                    <h4>Recommended Medicines:</h4>`;
+
+                    // Main predictions medicines - FIXED
+                    data.medicines.main.forEach(item => {
+                        resultHTML += `
+                        <div class="medicine-item">
+                            <strong>${item.disease}:</strong>
+                            <ul class="medicine-list">
+                                ${item.medications.map(med => `<li>${med}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    });
+
+                    // Extra prediction medicines - FIXED
+                    if (data.medicines.extra.length > 0) {
+                        resultHTML += `<h4>Alternative Medicines:</h4>`;
+                        data.medicines.extra.forEach(item => {
+                            resultHTML += `
+                            <div class="medicine-item">
+                                <strong>${item.disease}:</strong>
+                                <ul class="medicine-list">
+                                    ${item.medications.map(med => `<li>${med}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                        });
+                    }
+                    resultHTML += `</div>`;
+
+                    // Side effects section - FIXED
+                    if (Object.keys(data.side_effects).length > 0) {
+                        resultHTML += `
+                        <div class="side-effects">
+                            <h4>Potential Side Effects:</h4>
+                            ${Object.entries(data.side_effects).map(([medicine, effects]) => `
+                                <div class="medicine-item">
+                                    <strong>${medicine}:</strong>
+                                    <p>${effects}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    }
+
+                    // Interactions section - FIXED
+                    if (Object.keys(data.interactions).length > 0) {
+                        resultHTML += `
+                        <div class="interactions">
+                            <h4>Drug Interactions:</h4>
+                            ${Object.entries(data.interactions).map(([key, info]) => {
+                            const riskClass = info.risk_level?.toLowerCase() === 'high' ? 'risk-high' :
+                                info.risk_level?.toLowerCase() === 'moderate' ? 'risk-moderate' : 'risk-low';
+                            return `
+                                    <div class="interaction-item">
+                                        <strong>${info.drug_a} + ${info.drug_b}</strong>
+                                        <p class="${riskClass}">Risk Level: ${info.risk_level}</p>
+                                        <p>${info.interaction}</p>
+                                    </div>
+                                `;
+                        }).join('')}
+                        </div>
+                    `;
+                    }
+
+                    resultsDiv.innerHTML = resultHTML;
+                })
+                .catch(error => {
+                    document.getElementById('loading').style.display = 'none';
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = `
+            <h3>Error:</h3>
+            <p>There was an error making the prediction. Please try again.</p>
+            <p>Error details: ${error.message}</p>
+        `;
+                    console.error('Error details:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .message-box {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .message.user {
+            text-align: right;
+        }
+        .message.bot {
+            text-align: left;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .message.user span, .message.bot span {
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message.user span {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .message.bot span {
+            background-color: #ddd;
+        }
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            border: 1px solid #4CAF50;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="message-box" id="message-box">
+            <!-- Conversation messages will be displayed here -->
+            {% for message in conversation %}
+                <div class="message {{ message.role }}">
+                    <span>{{ message.message }}</span>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to send the message to the server and get a response
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+
+            if (userInput.trim() === '') {
+                return;
+            }
+
+            // Display user message
+            const messageBox = document.getElementById('message-box');
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('message', 'user');
+            userMessageDiv.innerHTML = `<span>${userInput}</span>`;
+            messageBox.appendChild(userMessageDiv);
+
+            // Clear the input field
+            document.getElementById('user-input').value = '';
+
+            // Send the message to the server
+            fetch('/send_message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botMessage = data.response;
+
+                // Display bot message
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot');
+                botMessageDiv.innerHTML = `<span>${botMessage}</span>`;
+                messageBox.appendChild(botMessageDiv);
+
+                // Scroll to the latest message
+                messageBox.scrollTop = messageBox.scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
