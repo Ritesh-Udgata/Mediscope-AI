@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Doctor Symptom Checker</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -166,33 +168,153 @@
         .risk-low {
             color: #28a745;
         }
+        @keyframes slideDown {
+    0% {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        max-height: 100px;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+    }
+.gradient-background {
+    background: linear-gradient(300deg, #142850, #27496D, #0C7B93, #00A8CC);
+    background-size: 120% 100%;
+    animation: gradient-animation 8s ease infinite;
+
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+    @keyframes slideUp {
+    0% {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+    50% {
+        max-height: 100px;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+    }
+
+    .animate-slideDown {
+    animation: slideDown 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    .animate-slideUp {
+    animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    .question-active {
+    background-color: #00000052;
+    transform: scale(1.02);
+    transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .question-reset {
+    @apply bg-black;
+    transform: scale(1);
+    transition: background-color 0.3s, transform 0.3s;
+    }
+
+#faqSection{
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+.thebox{
+    background-color: rgba(255, 255, 255, 0.181)
+}
+.question:hover{
+    background-color: #07424f4a;
+
+}
+.question{
+    background-color: rgba(0, 0, 0, 0.345);
+}
+.answer{
+    background-color: rgba(0, 0, 0, 0.345);
+
+}
+.custom{
+    background-color: #031f2140;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+}
     </style>
 </head>
 
-<body>
-    <h2>Doctor Symptom Checker</h2>
-    <a href="http://localhost:3000">
-        <button>Go to Chat</button>
+<body class="gradient-background">
+    <nav class="navbar  custom" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">AI COPILOT FOR DOCTORS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              Navbar text with an inline element
+            </span>
+          </div>
+        </div>
+      </nav>
+    <h2 style="color: white;">MEDISCOPE AI</h2>
+    <a  href="http://localhost:3000">
+        <button class="btn btn-outline-info" style="margin-left: 20px;">AI Consultant</button>
     </a>
     <a href="http://localhost:4000/database-overhaul">
-        <button>Database Overhaul</button>
+        <button class="btn btn-outline-warning">Database Overhaul</button>
     </a>
 
     <div class="container">
         
-        <div class="symptom-container">
+        <div class="symptom-container thebox">
             <label for="symptoms"><strong>Select Symptoms:</strong></label>
-            <p class="instructions">Hold Ctrl (Windows) or Command (Mac) to select multiple symptoms</p>
-            <select id="symptoms" class="symptom-selector" multiple>
+            <p class="instructions" style="color: white;">Hold Ctrl (Windows) or Command (Mac) to select multiple symptoms</p>
+            <select id="symptoms" class="symptom-selector question" multiple>
                 {% for symptom in symptoms_list %}
-                <option value="{{ loop.index0 }}">{{ symptom }}</option>
+                <option value="{{ loop.index0 }}" style="color: white;">{{ symptom }}</option>
                 {% endfor %}
             </select>
-            <button class="button" onclick="getPrediction()">Predict Disease</button>
+            <button class="button btn btn-success" onclick="getPrediction()">Predict Disease</button>
             <div id="loading">Processing...</div>
         </div>
 
-        <div class="results" id="results"></div>
+        <div class="results thebox" id="results"></div>
     </div>
 
     <script>
@@ -353,6 +475,7 @@
                 });
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

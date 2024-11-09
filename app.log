@@ -600,3 +600,41 @@ DataLoadError: Drug data loading failed: 'MedicalPredictor' object has no attrib
 2024-11-09 22:33:05,423 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 22:33:05] "[32mPOST /login HTTP/1.1[0m" 302 -
 2024-11-09 22:33:05,430 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 22:33:05] "[32mGET /main HTTP/1.1[0m" 302 -
 2024-11-09 22:33:05,437 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 22:33:05] "GET / HTTP/1.1" 200 -
+2024-11-09 22:59:19,054 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 22:59:19] "GET / HTTP/1.1" 200 -
+2024-11-09 22:59:28,459 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 22:59:28] "GET / HTTP/1.1" 200 -
+2024-11-09 23:01:06,844 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:01:06] "GET / HTTP/1.1" 200 -
+2024-11-09 23:01:52,081 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:01:52] "GET / HTTP/1.1" 200 -
+2024-11-09 23:02:03,954 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:02:03] "GET / HTTP/1.1" 200 -
+2024-11-09 23:02:17,526 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:02:17] "GET / HTTP/1.1" 200 -
+2024-11-09 23:02:30,822 - __main__ - INFO - Received prediction request
+2024-11-09 23:02:31,065 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-09 23:02:31,082 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-09 23:02:31,907 - __main__ - INFO - Successfully loaded drug data
+2024-11-09 23:02:44,835 - __main__ - INFO - Successfully generated prediction response
+2024-11-09 23:02:44,840 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:02:44] "POST /predict HTTP/1.1" 200 -
+2024-11-09 23:04:09,216 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:04:09] "GET / HTTP/1.1" 200 -
+2024-11-09 23:05:51,956 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:05:51] "GET / HTTP/1.1" 200 -
+2024-11-09 23:06:41,369 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:06:41] "GET / HTTP/1.1" 200 -
+2024-11-09 23:07:13,956 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:07:13] "GET / HTTP/1.1" 200 -
+2024-11-09 23:07:31,198 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:07:31] "GET / HTTP/1.1" 200 -
+2024-11-09 23:07:54,747 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:07:54] "GET / HTTP/1.1" 200 -
+2024-11-09 23:11:19,050 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:11:19] "GET / HTTP/1.1" 200 -
+2024-11-09 23:20:07,932 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:20:07] "GET / HTTP/1.1" 200 -
+2024-11-09 23:21:40,976 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:21:40] "GET / HTTP/1.1" 200 -
+2024-11-09 23:22:02,101 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:22:02] "GET / HTTP/1.1" 200 -
+2024-11-09 23:26:18,279 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:26:18] "GET / HTTP/1.1" 200 -
+2024-11-09 23:26:21,500 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:26:21] "GET / HTTP/1.1" 200 -
+2024-11-09 23:29:31,990 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:29:31] "GET / HTTP/1.1" 200 -
+2024-11-09 23:29:32,074 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:29:32] "[33mGET /acm_logo_black.jpeg HTTP/1.1[0m" 404 -
+2024-11-09 23:30:27,473 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:30:27] "GET / HTTP/1.1" 200 -
+2024-11-09 23:30:49,774 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:30:49] "GET / HTTP/1.1" 200 -
+2024-11-09 23:30:57,955 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:30:57] "GET / HTTP/1.1" 200 -
+2024-11-09 23:31:32,012 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:31:32] "GET / HTTP/1.1" 200 -
+2024-11-09 23:32:14,774 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:32:14] "GET / HTTP/1.1" 200 -
+2024-11-09 23:33:12,989 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:33:12] "GET / HTTP/1.1" 200 -
+2024-11-09 23:34:21,771 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:21] "GET / HTTP/1.1" 200 -
+2024-11-09 23:34:23,639 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:23] "GET /login HTTP/1.1" 200 -
+2024-11-09 23:34:28,155 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-09 23:34:28,161 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:28] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-09 23:34:28,171 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:28] "GET / HTTP/1.1" 200 -
+2024-11-09 23:35:33,454 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:35:33] "GET / HTTP/1.1" 200 -

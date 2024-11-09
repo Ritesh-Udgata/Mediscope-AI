@@ -3,7 +3,106 @@
 <head>
     <title>Login</title>
 </head>
-<body>
+<style>
+       @keyframes slideDown {
+    0% {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        max-height: 100px;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+    }
+.gradient-background {
+    background: linear-gradient(300deg, #142850, #27496D, #0C7B93, #00A8CC);
+    background-size: 120% 100%;
+    animation: gradient-animation 8s ease infinite;
+
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+    @keyframes slideUp {
+    0% {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+    50% {
+        max-height: 100px;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+    }
+
+    .animate-slideDown {
+    animation: slideDown 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    .animate-slideUp {
+    animation: slideUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    .question-active {
+    background-color: #00000052;
+    transform: scale(1.02);
+    transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .question-reset {
+    @apply bg-black;
+    transform: scale(1);
+    transition: background-color 0.3s, transform 0.3s;
+    }
+
+#faqSection{
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+.thebox{
+    background-color: rgba(255, 255, 255, 0.181)
+}
+.question:hover{
+    background-color: #07424f4a;
+
+}
+.question{
+    background-color: rgba(0, 0, 0, 0.345);
+}
+.answer{
+    background-color: rgba(0, 0, 0, 0.345);
+
+}
+.custom{
+    background-color: #031f2140;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+}
+    
+</style>
+<body class="gradient-background">
     <h2>Login</h2>
     <form method="POST">
         <label>Username:</label>
