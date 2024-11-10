@@ -17,7 +17,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with your own secret key
 # Initialize Google API key
-GOOGLE_API_KEY = 'AIzaSyA8x-414brrX8bNB2s_DB8mMGk6wViquJo'
+GOOGLE_API_KEY = 'your_api_key'
 genai.configure(api_key=GOOGLE_API_KEY)
 CONVERSATION_FILE = 'conversation.json'
 
