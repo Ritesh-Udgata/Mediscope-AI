@@ -722,3 +722,24 @@ DataLoadError: Drug data loading failed: 'MedicalPredictor' object has no attrib
 2024-11-10 17:00:22,391 - __main__ - INFO - Number of side effects: 2931
 2024-11-10 17:00:22,405 - werkzeug - WARNING -  * Debugger is active!
 2024-11-10 17:00:22,407 - werkzeug - INFO -  * Debugger PIN: 923-312-183
+2024-11-10 18:50:12,569 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Ritesh Udgata\\Desktop\\AI for doctors\\flask_model_api\\MediscopeAI-chatbot\\app.py', reloading
+2024-11-10 18:50:13,085 - werkzeug - INFO -  * Restarting with stat
+2024-11-10 18:50:17,239 - __main__ - INFO - Starting Flask application...
+2024-11-10 18:50:17,268 - h5py._conv - DEBUG - Creating converter from 3 to 5
+2024-11-10 18:50:17,345 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 18:50:18,652 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 18:50:18,652 - __main__ - INFO - Model loaded successfully
+2024-11-10 18:50:18,969 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 18:50:18,969 - __main__ - INFO - Data files loaded successfully
+2024-11-10 18:50:18,969 - __main__ - INFO - Number of diseases in data: 197
+2024-11-10 18:50:18,969 - __main__ - INFO - Number of drug interactions: 191148
+2024-11-10 18:50:18,969 - __main__ - INFO - Number of side effects: 2931
+2024-11-10 18:50:18,991 - werkzeug - WARNING -  * Debugger is active!
+2024-11-10 18:50:18,993 - werkzeug - INFO -  * Debugger PIN: 923-312-183
+2024-11-10 18:50:41,674 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 18:50:41] "GET / HTTP/1.1" 200 -
+2024-11-10 18:50:50,425 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 18:50:50] "GET /login HTTP/1.1" 200 -
+2024-11-10 18:50:55,547 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 18:50:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-10 18:50:55,555 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 18:50:55] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-10 18:50:55,560 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 18:50:55] "GET / HTTP/1.1" 200 -
+2024-11-10 18:52:11,289 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Ritesh Udgata\\Desktop\\AI for doctors\\flask_model_api\\MediscopeAI-chatbot\\app.py', reloading
+2024-11-10 18:52:11,778 - werkzeug - INFO -  * Restarting with stat
