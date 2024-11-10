@@ -638,3 +638,87 @@ DataLoadError: Drug data loading failed: 'MedicalPredictor' object has no attrib
 2024-11-09 23:34:28,161 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:28] "[32mGET /main HTTP/1.1[0m" 302 -
 2024-11-09 23:34:28,171 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:34:28] "GET / HTTP/1.1" 200 -
 2024-11-09 23:35:33,454 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:35:33] "GET / HTTP/1.1" 200 -
+2024-11-09 23:36:47,523 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:36:47] "GET /login HTTP/1.1" 200 -
+2024-11-09 23:37:49,559 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:37:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-09 23:37:49,567 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:37:49] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-09 23:37:49,579 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:37:49] "GET / HTTP/1.1" 200 -
+2024-11-09 23:38:09,539 - __main__ - INFO - Received prediction request
+2024-11-09 23:38:09,808 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-09 23:38:09,830 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-09 23:38:11,128 - __main__ - INFO - Successfully loaded drug data
+2024-11-09 23:38:26,598 - __main__ - INFO - Successfully generated prediction response
+2024-11-09 23:38:26,601 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:38:26] "POST /predict HTTP/1.1" 200 -
+2024-11-09 23:40:16,782 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:40:16] "GET /login HTTP/1.1" 200 -
+2024-11-09 23:40:42,044 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:40:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-09 23:40:42,056 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:40:42] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-09 23:40:42,072 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:40:42] "GET / HTTP/1.1" 200 -
+2024-11-09 23:40:59,574 - __main__ - INFO - Received prediction request
+2024-11-09 23:40:59,711 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-09 23:40:59,721 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-09 23:41:00,735 - __main__ - INFO - Successfully loaded drug data
+2024-11-09 23:41:07,199 - __main__ - INFO - Successfully generated prediction response
+2024-11-09 23:41:07,209 - werkzeug - INFO - 127.0.0.1 - - [09/Nov/2024 23:41:07] "POST /predict HTTP/1.1" 200 -
+2024-11-10 16:38:29,854 - __main__ - INFO - Starting Flask application...
+2024-11-10 16:38:29,903 - h5py._conv - DEBUG - Creating converter from 3 to 5
+2024-11-10 16:38:30,065 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 16:38:31,248 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 16:38:31,248 - __main__ - INFO - Model loaded successfully
+2024-11-10 16:38:31,588 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 16:38:31,588 - __main__ - INFO - Data files loaded successfully
+2024-11-10 16:38:31,588 - __main__ - INFO - Number of diseases in data: 197
+2024-11-10 16:38:31,588 - __main__ - INFO - Number of drug interactions: 191148
+2024-11-10 16:38:31,588 - __main__ - INFO - Number of side effects: 2931
+2024-11-10 16:38:31,607 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-10 16:38:31,607 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-10 16:38:31,609 - werkzeug - INFO -  * Restarting with stat
+2024-11-10 16:38:35,398 - __main__ - INFO - Starting Flask application...
+2024-11-10 16:38:35,415 - h5py._conv - DEBUG - Creating converter from 3 to 5
+2024-11-10 16:38:35,491 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 16:38:35,874 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 16:38:35,874 - __main__ - INFO - Model loaded successfully
+2024-11-10 16:38:36,160 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 16:38:36,160 - __main__ - INFO - Data files loaded successfully
+2024-11-10 16:38:36,161 - __main__ - INFO - Number of diseases in data: 197
+2024-11-10 16:38:36,161 - __main__ - INFO - Number of drug interactions: 191148
+2024-11-10 16:38:36,161 - __main__ - INFO - Number of side effects: 2931
+2024-11-10 16:38:36,170 - werkzeug - WARNING -  * Debugger is active!
+2024-11-10 16:38:36,172 - werkzeug - INFO -  * Debugger PIN: 923-312-183
+2024-11-10 16:39:08,197 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:08] "GET / HTTP/1.1" 200 -
+2024-11-10 16:39:08,356 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-11-10 16:39:15,132 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:15] "GET /login HTTP/1.1" 200 -
+2024-11-10 16:39:21,283 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-10 16:39:21,289 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:21] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-10 16:39:21,294 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:21] "GET / HTTP/1.1" 200 -
+2024-11-10 16:39:39,891 - __main__ - INFO - Received prediction request
+2024-11-10 16:39:39,979 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 16:39:39,991 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 16:39:40,609 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 16:39:58,877 - __main__ - INFO - Successfully generated prediction response
+2024-11-10 16:39:58,887 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:39:58] "POST /predict HTTP/1.1" 200 -
+2024-11-10 16:42:36,143 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:42:36] "GET / HTTP/1.1" 200 -
+2024-11-10 16:42:46,819 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:42:46] "GET /login HTTP/1.1" 200 -
+2024-11-10 16:43:40,994 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:43:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-11-10 16:43:41,004 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:43:41] "[32mGET /main HTTP/1.1[0m" 302 -
+2024-11-10 16:43:41,017 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:43:41] "GET / HTTP/1.1" 200 -
+2024-11-10 16:44:03,750 - __main__ - INFO - Received prediction request
+2024-11-10 16:44:06,371 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 16:44:08,037 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 16:44:09,983 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 16:44:15,307 - __main__ - INFO - Successfully generated prediction response
+2024-11-10 16:44:15,314 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:44:15] "POST /predict HTTP/1.1" 200 -
+2024-11-10 16:45:59,716 - werkzeug - INFO - 127.0.0.1 - - [10/Nov/2024 16:45:59] "GET / HTTP/1.1" 200 -
+2024-11-10 17:00:14,477 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Ritesh Udgata\\Desktop\\AI for doctors\\flask_model_api\\MediscopeAI-chatbot\\app.py', reloading
+2024-11-10 17:00:15,832 - werkzeug - INFO -  * Restarting with stat
+2024-11-10 17:00:21,451 - __main__ - INFO - Starting Flask application...
+2024-11-10 17:00:21,473 - h5py._conv - DEBUG - Creating converter from 3 to 5
+2024-11-10 17:00:21,565 - absl - WARNING - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-11-10 17:00:22,101 - __main__ - INFO - Successfully loaded model and encoder
+2024-11-10 17:00:22,101 - __main__ - INFO - Model loaded successfully
+2024-11-10 17:00:22,391 - __main__ - INFO - Successfully loaded drug data
+2024-11-10 17:00:22,391 - __main__ - INFO - Data files loaded successfully
+2024-11-10 17:00:22,391 - __main__ - INFO - Number of diseases in data: 197
+2024-11-10 17:00:22,391 - __main__ - INFO - Number of drug interactions: 191148
+2024-11-10 17:00:22,391 - __main__ - INFO - Number of side effects: 2931
+2024-11-10 17:00:22,405 - werkzeug - WARNING -  * Debugger is active!
+2024-11-10 17:00:22,407 - werkzeug - INFO -  * Debugger PIN: 923-312-183
